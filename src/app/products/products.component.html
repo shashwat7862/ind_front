@@ -1,0 +1,42 @@
+
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Products
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+ 
+
+<ion-content class="card-background-page">
+
+  <ion-card *ngFor="let item of productList" routerLink="/productsDetails/{{item._id}}">
+    
+      <ion-item>
+          <h4> {{item.productName}} {{item._id}}</h4>
+        </ion-item>
+    <ion-img [src]="'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSbMMnfUxkleJuYR9v1ruy0RG1y6TQdqVjJJ7-huN7utmQkQZe'"></ion-img>
+        <ion-row>
+            <ion-col>
+                <ion-note>
+                    <h2> ₹ {{item.price}}</h2>
+                </ion-note>
+            </ion-col>
+            <ion-col>
+              <button ion-button icon-start clear small>
+              </button>
+            </ion-col>
+            <ion-col align-self-center text-center>
+              <ion-note>
+                  <h5>{{item.area}}</h5>
+              </ion-note>
+            </ion-col>
+          </ion-row>
+  </ion-card>
+
+  
+</ion-content>

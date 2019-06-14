@@ -12,8 +12,12 @@ const routes: Routes = [
     loadChildren: './home/home.module#HomePageModule'
   },
   {
-    path: 'list',
-    loadChildren: './list/list.module#ListPageModule'
+    path: 'product',
+    loadChildren: './products/products.module#productsPageModule'
+  },
+  {
+    path: 'productsDetails/:id',
+    loadChildren: './productsDetails/productsDetails.module#productsDetailsPageModule'
   }
 ];
 

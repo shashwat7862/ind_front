@@ -1,0 +1,106 @@
+
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Products
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+ 
+
+<ion-content class="card-background-page">
+
+  <ion-card >
+    
+      <ion-item>
+          <h4> {{productDetails.productName}}</h4>
+        </ion-item>
+    <ion-img [src]="'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSbMMnfUxkleJuYR9v1ruy0RG1y6TQdqVjJJ7-huN7utmQkQZe'"></ion-img>
+        <ion-row>
+            <ion-col>
+                <ion-note>
+                    <h6> Price</h6>
+                </ion-note>
+            </ion-col>
+            <ion-col>
+              <button ion-button icon-start clear small>
+              </button>
+            </ion-col>
+            <ion-col align-self-center text-center>
+              <ion-note>
+                  <h6>₹ {{productDetails.price}}</h6>
+              </ion-note>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+                <ion-note>
+                    <h6> Area</h6>
+                </ion-note>
+            </ion-col>
+            <ion-col>
+              <button ion-button icon-start clear small>
+              </button>
+            </ion-col>
+            <ion-col align-self-center text-center>
+              <ion-note>
+                  <h6> {{productDetails.area}}</h6>
+              </ion-note>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+                <ion-note>
+                    <h6> Model No</h6>
+                </ion-note>
+            </ion-col>
+            <ion-col>
+              <button ion-button icon-start clear small>
+              </button>
+            </ion-col>
+            <ion-col align-self-center text-center>
+              <ion-note>
+                  <h6> {{productDetails.modelNo}}</h6>
+              </ion-note>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+                <ion-note>
+                    <h6> Category</h6>
+                </ion-note>
+            </ion-col>
+            <ion-col>
+              <button ion-button icon-start clear small>
+              </button>
+            </ion-col>
+            <ion-col align-self-center text-center>
+              <ion-note>
+                  <h6> {{productDetails.category}}</h6>
+              </ion-note>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+                <ion-note>
+                    <h6> Description</h6>
+                </ion-note>
+            </ion-col>
+            <ion-col>
+              <button ion-button icon-start clear small>
+              </button>
+            </ion-col>
+            <ion-col align-self-center text-center>
+              <ion-note>
+                  <h6> {{productDetails.description}}</h6>
+              </ion-note>
+            </ion-col>
+          </ion-row>
+  </ion-card>
+
+  
+</ion-content>
