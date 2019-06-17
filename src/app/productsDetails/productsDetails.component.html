@@ -20,19 +20,35 @@
           <h4> {{productDetails.productName}}</h4>
         </ion-item>
     <ion-img [src]="'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSbMMnfUxkleJuYR9v1ruy0RG1y6TQdqVjJJ7-huN7utmQkQZe'"></ion-img>
-        <ion-row>
+    <ion-row>
+      <ion-col>
+          <ion-note>
+              <h6> Price</h6>
+          </ion-note>
+      </ion-col>
+      <ion-col>
+        
+      </ion-col>
+      <ion-col align-self-center text-center>
+        <ion-note>
+            <h6>₹ {{productDetails.price}}</h6>
+        </ion-note>
+      </ion-col>
+    </ion-row>
+    
+    <ion-row>
             <ion-col>
                 <ion-note>
-                    <h6> Price</h6>
+                  <ion-button color="success" (click)="openShowInterestModal()">Show Interest</ion-button>
+
                 </ion-note>
             </ion-col>
             <ion-col>
-              <button ion-button icon-start clear small>
-              </button>
+               
             </ion-col>
             <ion-col align-self-center text-center>
               <ion-note>
-                  <h6>₹ {{productDetails.price}}</h6>
+                <ion-button color="secondary" (click)="openQueryModal()" >Query</ion-button>
               </ion-note>
             </ion-col>
           </ion-row>
@@ -43,8 +59,8 @@
                 </ion-note>
             </ion-col>
             <ion-col>
-              <button ion-button icon-start clear small>
-              </button>
+              
+              
             </ion-col>
             <ion-col align-self-center text-center>
               <ion-note>
@@ -59,8 +75,8 @@
                 </ion-note>
             </ion-col>
             <ion-col>
-              <button ion-button icon-start clear small>
-              </button>
+              
+              
             </ion-col>
             <ion-col align-self-center text-center>
               <ion-note>
@@ -75,8 +91,8 @@
                 </ion-note>
             </ion-col>
             <ion-col>
-              <button ion-button icon-start clear small>
-              </button>
+              
+              
             </ion-col>
             <ion-col align-self-center text-center>
               <ion-note>
@@ -91,8 +107,8 @@
                 </ion-note>
             </ion-col>
             <ion-col>
-              <button ion-button icon-start clear small>
-              </button>
+              
+              
             </ion-col>
             <ion-col align-self-center text-center>
               <ion-note>

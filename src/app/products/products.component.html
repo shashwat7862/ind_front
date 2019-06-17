@@ -16,25 +16,28 @@
 
   <ion-card *ngFor="let item of productList" routerLink="/productsDetails/{{item._id}}">
     
-      <ion-item>
-          <h4> {{item.productName}} {{item._id}}</h4>
+      <!-- <ion-item>
+          <h4> {{item.productName}} </h4>
         </ion-item>
-    <ion-img [src]="'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSbMMnfUxkleJuYR9v1ruy0RG1y6TQdqVjJJ7-huN7utmQkQZe'"></ion-img>
-        <ion-row>
+    <ion-img [src]="'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxz3J2L2b2VnAM9GCCxiZvUfXQtjtkTQH1rdg-tuMqTqSFiURc5g'"></ion-img>
+        -->
+    <ion-row>
             <ion-col>
-                <ion-note>
-                    <h2> ₹ {{item.price}}</h2>
-                </ion-note>
+                <ion-img style="border: 1px black solid" [src]="'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxz3J2L2b2VnAM9GCCxiZvUfXQtjtkTQH1rdg-tuMqTqSFiURc5g'"></ion-img>
             </ion-col>
             <ion-col>
-              <button ion-button icon-start clear small>
-              </button>
+                
+                <h4 style="text-align: left;"> <b>₹ {{item.price}} </b> </h4><br>
+                <h6 style="    margin-top: -20px;
+                text-align: left;">{{item.productName}}</h6>
+                <h6 style="     
+                text-align: left;"> <ion-icon name="pin"></ion-icon>{{item.area}}</h6>
             </ion-col>
-            <ion-col align-self-center text-center>
+            <!-- <ion-col align-self-center text-center>
               <ion-note>
-                  <h5>{{item.area}}</h5>
+                 
               </ion-note>
-            </ion-col>
+            </ion-col> -->
           </ion-row>
   </ion-card>
 
