@@ -9,6 +9,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
   templateUrl: 'app.component.html'
 })
 export class AppComponent {
+  public isUserLogin:any ;
   public appPages = [
     {
       title: 'Product List',
@@ -31,12 +32,23 @@ export class AppComponent {
     }
   ];
 
+public profile=  {
+  title: 'Profile',
+  url: '/profile',
+  icon: 'person'
+}
+
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar
   ) {
     this.initializeApp();
+    this.isUserLogin = JSON.parse(localStorage.getItem('isUserLogin'))
+    console.log(this.isUserLogin , typeof this.isUserLogin );
+  if(  this.isUserLogin ){
+      this.appPages.push(this.profile)
+  }
   }
 
   initializeApp() {

@@ -9,9 +9,10 @@
       <ion-content>
         <ion-list>
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
-            <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
+            <ion-item [routerDirection]="'root'" [routerLink]="[p.url]"   >
               <ion-icon slot="start" [name]="p.icon"></ion-icon>
-              <ion-label>
+              <ion-label >
+                <!-- {{p.title == 'profile' && isUserLogin ? '':p.title}} -->
                 {{p.title}}
               </ion-label>
             </ion-item>

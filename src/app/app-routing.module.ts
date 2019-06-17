@@ -18,7 +18,18 @@ const routes: Routes = [
   {
     path: 'productsDetails/:id',
     loadChildren: './productsDetails/productsDetails.module#productsDetailsPageModule'
+  },
+  {
+    path: 'profile',
+    loadChildren: './profile/profile.module#profilePageModule'
+  }, {
+    path: 'complaints',
+    loadChildren: './complaints/complaints.module#complaintsPageModule'
+  }, {
+    path: 'suggestions',
+    loadChildren: './suggestions/suggestions.module#suggestionsPageModule'
   }
+  
 ];
 
 @NgModule({
