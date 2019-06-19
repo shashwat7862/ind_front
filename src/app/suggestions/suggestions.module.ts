@@ -5,7 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 
 import { SuggestionsComponent } from './suggestions.component';
-import { ProductService} from '../api/product.service';
+import { ProductService} from '../api/product/product.service';
 
 @NgModule({
   imports: [

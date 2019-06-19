@@ -28,6 +28,21 @@ const routes: Routes = [
   }, {
     path: 'suggestions',
     loadChildren: './suggestions/suggestions.module#suggestionsPageModule'
+  },{
+    path: 'aboutUs',
+    loadChildren: './aboutUs/aboutUs.module#aboutUsPageModule'
+  },
+  {
+    path: 'termAndConditions',
+    loadChildren: './TNC/TNC.module#TNCPageModule'
+  },
+  {
+    path: 'settings',
+    loadChildren: './settings/settings.module#settingsPageModule'
+  },
+  {
+    path: 'sell',
+    loadChildren: './sellProduct/sellProduct.module#sellProductPageModule'
   }
   
 ];

@@ -1,8 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output,EventEmitter } from '@angular/core';
 import { NavParams } from '@ionic/angular';
 import { ModalController } from '@ionic/angular';
 import { AuthService } from '../../api/auth/auth.service';
 import { ToastController } from '@ionic/angular';
+// import { ViewController } from 'ionic-angular';
 
 @Component({
   selector: 'register-page',
@@ -12,6 +13,7 @@ export class RegisterPage {
 
   // "value" passed in componentProps
   @Input() value: number;
+  
   public ShowOTPScreen:Boolean = false
 
   constructor(navParams: NavParams,public toastController: ToastController,public modalController: ModalController,private  authService:  AuthService) {
@@ -32,10 +34,12 @@ export class RegisterPage {
     this.authService.register(form.value).subscribe((res) => {
       console.log(res)
       result = res;
-      localStorage.setItem('isUserLogin',true);
+      localStorage.setItem('isUserLogin','No');
       localStorage.setItem('authToken',result.object.authToken);
       this.ShowOTPScreen = true;
-      localStorage.setItem('mobile',form.value.mobile)
+      localStorage.setItem('mobile',form.value.mobile);
+      localStorage.setItem('UserData',JSON.stringify(result.object));
+      localStorage.setItem('UserId',result.object.userDetails._id)
 
       this.authService.sendOTP(form.value.mobile).subscribe((res) => {
         console.log(res)
@@ -50,7 +54,7 @@ export class RegisterPage {
     this.authService.varifyOTP(localStorage.getItem('mobile'),form.value.otp).subscribe(async (res) => {
         console.log(res)
         result = res;
-        this.modalController.dismiss('cancel');
+        this.modalController.dismiss('successLogin');
         const toast = await this.toastController.create({
             header: 'Dear Customer',
             message: 'You have Registered successfully"',
@@ -67,6 +71,10 @@ export class RegisterPage {
             ]
           });
           toast.present();
+          localStorage.setItem('isUserLogin','Yes');
+           
+         
+          
       });
   }
 

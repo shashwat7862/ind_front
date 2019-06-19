@@ -36,22 +36,7 @@
       </ion-col>
     </ion-row>
     
-    <ion-row>
-            <ion-col>
-                <ion-note>
-                  <ion-button color="success" (click)="openShowInterestModal()">Show Interest</ion-button>
-
-                </ion-note>
-            </ion-col>
-            <ion-col>
-               
-            </ion-col>
-            <ion-col align-self-center text-center>
-              <ion-note>
-                <ion-button color="secondary" (click)="openQueryModal()" >Query</ion-button>
-              </ion-note>
-            </ion-col>
-          </ion-row>
+    
           <ion-row>
             <ion-col>
                 <ion-note>
@@ -118,5 +103,12 @@
           </ion-row>
   </ion-card>
 
-  
+  <ion-segment (ionChange)="segmentChanged($event)" color="warning">
+      <ion-segment-button value="hybrid" routerLink="/sell">
+          <ion-label (click)="openShowInterestModal()">Show Interest</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="sat" routerLink="/profile">
+          <ion-label (click)="openQueryModal()" >Query</ion-label>
+      </ion-segment-button>
+    </ion-segment>
 </ion-content>

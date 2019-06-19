@@ -3,33 +3,44 @@ import { Component } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { validatelogInService } from './api/auth/validatelogIn.service'
+
 
 @Component({
   selector: 'app-root',
-  templateUrl: 'app.component.html'
+  templateUrl: 'app.component.html',
+  providers:[validatelogInService]
 })
 export class AppComponent {
   public isUserLogin:any ;
+  public subscription:any;
   public appPages = [
     {
       title: 'Product List',
       url: '/product',
-      icon: 'home'
+      icon: 'logo-buffer'
     },
     {
       title: 'Complants',
-      url: '/product',
+      url: '/complaints',
       icon: 'home'
     },{
       title: 'Suggesstions',
-      url: '/product',
+      url: '/suggestions',
+      icon: 'home'
+    },{
+      title: 'Settings',
+      url: '/settings',
+      icon: 'settings'
+    },{
+      title: 'Term and Cond.',
+      url: '/termAndConditions',
+      icon: 'home'
+    },{
+      title: 'About Us',
+      url: '/aboutUs',
       icon: 'home'
     },
-    {
-      title: 'Log Out',
-      url: '/product',
-      icon: 'home'
-    }
   ];
 
 public profile=  {
@@ -41,14 +52,35 @@ public profile=  {
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
-    private statusBar: StatusBar
+    private statusBar: StatusBar,private validatelogInService: validatelogInService
   ) {
-    this.initializeApp();
-    this.isUserLogin = JSON.parse(localStorage.getItem('isUserLogin'))
+
+    this.subscription = validatelogInService.validatelogInUser$.subscribe(
+      _isUserLogin => {
+        console.log("mission",_isUserLogin);
+        alert("mission called");
+        this.isUserLogin = _isUserLogin
     console.log(this.isUserLogin , typeof this.isUserLogin );
-  if(  this.isUserLogin ){
-      this.appPages.push(this.profile)
+  if(  this.isUserLogin == 'successLogin'){
+      this.appPages.unshift(this.profile)
   }
+    });
+
+    this.subscription = validatelogInService.validatelogOutUser$.subscribe(
+      _isUserLogOut=> {
+        console.log("mission",_isUserLogOut);
+        alert("logout called");
+    console.log(this.isUserLogin , typeof this.isUserLogin );
+     if(_isUserLogOut == 'logOutUser'){
+      this.appPages.shift()
+     }
+    });
+
+    
+     
+
+    this.initializeApp();
+    
   }
 
   initializeApp() {
@@ -56,5 +88,11 @@ public profile=  {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+  }
+
+  loginUpdate(event){
+    alert("login update called")
+    console.log(event , event.value);
+
   }
 }

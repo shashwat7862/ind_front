@@ -1,14 +1,12 @@
 
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>
-      Products
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Products</ion-title>
+    </ion-toolbar>
+  </ion-header>
 
  
 
@@ -38,8 +36,26 @@
                  
               </ion-note>
             </ion-col> -->
+            
           </ion-row>
   </ion-card>
-
+  <!-- <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+      <ion-fab-button>
+        <ion-icon name="camera"></ion-icon>
+      </ion-fab-button>
+    </ion-fab> -->
+   
+    <ion-segment (ionChange)="segmentChanged($event)" color="warning">
+        <ion-segment-button value="standard" routerLink="/product" >
+            <ion-icon name="logo-buffer"></ion-icon>
+        </ion-segment-button>
+         
+        <ion-segment-button value="hybrid" routerLink="/sell">
+            <ion-icon name="camera"></ion-icon>
+        </ion-segment-button>
+        <ion-segment-button value="sat" routerLink="/profile">
+            <ion-icon name="person"></ion-icon>
+        </ion-segment-button>
+      </ion-segment>
   
 </ion-content>

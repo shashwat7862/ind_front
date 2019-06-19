@@ -17,6 +17,7 @@ import { LoginPage } from './modal/login/login.page';
 import { RegisterPage } from './modal/register/register.page';
 import { QueryPage } from './modal/query/query.page';
 import { FormsModule }   from '@angular/forms';
+import { productsDetailsPageModule} from './productsDetails/productsDetails.module'
 
 @NgModule({
   declarations: [AppComponent,ModalPage,LoginPage,RegisterPage,QueryPage],
@@ -27,6 +28,7 @@ import { FormsModule }   from '@angular/forms';
     AppRoutingModule,HttpClientModule,
     CommonModule,
     FormsModule
+    
   ],
   providers: [
     StatusBar,

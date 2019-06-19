@@ -1,0 +1,22 @@
+
+<ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Settings</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content >
+<ion-list>
+    <ion-item>
+      <ion-label>Enable Notification</ion-label>
+      <ion-toggle color="success" [(ngModel)]="pepperoni"></ion-toggle>
+    </ion-item>
+    
+    <ion-item>
+        <ion-label>Theme</ion-label>
+        <ion-toggle color="success" [(ngModel)]="sausage"></ion-toggle>
+      </ion-item>
+      </ion-list>
+  </ion-content>

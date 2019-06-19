@@ -15,7 +15,7 @@ export class ModalPage {
 
   constructor(navParams: NavParams,public modalController: ModalController) {
     var isUserLogin = localStorage.getItem('isUserLogin');
-    if(!isUserLogin){
+    if(isUserLogin == 'No'){
         this.openLoginModal();
     }else{
         alert("We Will call you shortly")

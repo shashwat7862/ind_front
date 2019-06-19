@@ -4,11 +4,11 @@ import { ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-complaints',
-  templateUrl: './complaints.component.html',
-  styleUrls: ['./complaints.component.scss'],
+  selector: 'app-settings',
+  templateUrl: './settings.component.html',
+  styleUrls: ['./settings.component.scss'],
 })
-export class ComplaintsComponent implements OnInit {
+export class SettingsComponent implements OnInit {
 
   constructor(private UserService:UserService,private router: Router,public toastController: ToastController) {
    }

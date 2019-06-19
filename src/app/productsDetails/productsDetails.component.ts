@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit ,Output,EventEmitter} from '@angular/core';
 
 import { ProductService} from '../api/product/product.service';
 
@@ -8,6 +8,7 @@ import { RegisterPage } from '../modal/register/register.page';
 import { QueryPage } from '../modal/query/query.page';
 import { ModalPage } from '../modal/modal.page';
 import { ToastController } from '@ionic/angular';
+import { validatelogInService }     from '../api/auth/validatelogIn.service';
 
 @Component({
   selector: 'app-productsDetails',
@@ -17,9 +18,10 @@ import { ToastController } from '@ionic/angular';
 export class productsDetailsComponent implements OnInit {
 
    public productDetails:any;
+   @Output() loginUpdate = new EventEmitter<string>();
    id: string;
 
-   constructor(private route: ActivatedRoute,public toastController: ToastController,private ProductService:ProductService,public modalController: ModalController) {
+   constructor(private route: ActivatedRoute,private validatelogInService: validatelogInService,public toastController: ToastController,private ProductService:ProductService,public modalController: ModalController) {
     this.id = this.route.snapshot.paramMap.get('id');
     console.log(this.id ,"drftgyhuj");
     let result = null;
@@ -52,12 +54,20 @@ export class productsDetailsComponent implements OnInit {
     async openShowInterestModal() {
       var isUserLogin = localStorage.getItem('isUserLogin');
     
-      if(!isUserLogin){
+      if(isUserLogin === 'No' || isUserLogin == undefined || isUserLogin == null){
         const modal = await this.modalController.create({
           component: RegisterPage,
           componentProps: { value: 123,keyboardClose:true,showBackdrop:true,animated:true },
         });
+        modal.onDidDismiss()
+        .then((data) => {
+          const user = data['data']; // Here's your selected user!
+          console.log(data,"++++++++++++++++++++++");
+          this.validatelogInService.validatelogInUser(data.data);
+      });
         return await modal.present();
+        
+        
     }else{
         const toast = await this.toastController.create({
           header: 'Dear Customer',

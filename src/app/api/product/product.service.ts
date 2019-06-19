@@ -27,4 +27,9 @@ public getProductDetails(id:string){
   return this.httpClient.get(`${this.apiURL}/api/v1/product/getDetails/${id}`);
   
 }
+
+public uploadImage(file){
+  return this.httpClient.post(`${this.apiURL}/api/v1/product/saveImage`,file);
+  
+}
 }

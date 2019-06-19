@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService} from '../api/user.service';
+import { UserService} from '../api/user/user.service';
 import { ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { validatelogInService} from '../api/auth/validatelogIn.service'
 
 @Component({
   selector: 'app-profile',
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(private UserService:UserService,private router: Router,public toastController: ToastController) {
+  constructor(private UserService:UserService,private validatelogInService:validatelogInService,private router: Router,public toastController: ToastController) {
    }
 
    public userData:any;
@@ -30,14 +31,15 @@ export class ProfileComponent implements OnInit {
 
   logOut(){
     localStorage.clear();
-    localStorage.setItem('isUserLogin',false);
+    localStorage.setItem('isUserLogin','No');
+    this.validatelogInService.validatelogOutUser('logOutUser');
     this.router.navigate(['/product'])
   }
 
   SaveEditedUserData(){
     this.enableEdit = false;
     let result = null;
-    console.log(this.userData,"userData");
+    console.log(JSON.stringify(this.userData),"userData");
     this.UserService.editUserData(localStorage.getItem('UserId'),
     {
       "email":this.userData.email,

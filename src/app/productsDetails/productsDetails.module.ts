@@ -20,6 +20,7 @@ import { ProductService} from '../api/product/product.service';
     ])
   ],
   declarations: [productsDetailsComponent],
-  providers:[ProductService]
+  providers:[ProductService],
+  exports:[productsDetailsComponent]
 })
 export class productsDetailsPageModule {}

@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Sell </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+    <input type="file" #fileInput placeholder="Upload file..." />
+    <button type="button" (click)="upload()">Upload</button>
+</ion-content>
+
+<ion-list>
+    <ion-item>
+      <ion-icon name="person" slot="start"></ion-icon>
+      <ion-label>
+        <p>Product Name</p>
+        <h2>{{userData.fullName}}</h2>
+        <input type="text"  *ngIf="enableEdit" [(ngModel)]="userData.fullName" >
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="call" slot="start"></ion-icon>
+      <ion-label>
+        <p>Model</p>
+        <h2>{{userData.mobile}}</h2>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="mail" slot="start"></ion-icon>
+      <ion-label>
+        <p>Email</p>
+        <h2>{{userData.email}}</h2>
+        <input type="text" *ngIf="enableEdit" [(ngModel)]="userData.email" >
+      </ion-label>
+    </ion-item>
+    <ion-row>
+      <ion-col></ion-col>
+      <ion-col><br><ion-button color="primary" *ngIf="!enableEdit" (click)="logOut()" >Submit</ion-button><ion-button color="primary" *ngIf="enableEdit" (click)="SaveEditedUserData()" >Save</ion-button></ion-col>
+      <ion-col></ion-col>
+    </ion-row>
+  </ion-list>
