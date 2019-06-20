@@ -1,3 +1,45 @@
-<p>
-  login-form works!
-</p>
+<button (click)="onCancel()">close</button>
+<ion-content  color="warning">
+    <form  #form="ngForm" (ngSubmit)="logIn(form)" *ngIf="!ShowOTPScreen">
+      <ion-grid>
+        <ion-row color="primary" justify-content-center>
+          <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+            <div text-center>
+              <h3>Sign In your account!</h3>
+            </div>
+            <div padding>
+               
+              <ion-item>
+                <ion-input name="mobile" type="mobile" placeholder="Mobile" ngModel required></ion-input>
+              </ion-item>
+              
+            </div>
+            <div padding>
+              <ion-button  size="large" type="submit" [disabled]="form.invalid" expand="block">Log IN</ion-button>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      
+    </form>
+    <form  #form="ngForm" (ngSubmit)="submitOTP(form)" *ngIf="ShowOTPScreen">
+            <ion-grid>
+              <ion-row color="primary" justify-content-center>
+                <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+                  <div text-center>
+                    <h3>Enter OTP</h3>
+                  </div>
+                  <div padding>
+                    
+                    <ion-item>
+                      <ion-input name="otp" type="number" placeholder="****" ngModel required></ion-input>
+                    </ion-item>
+                  </div>
+                  <div padding>
+                    <ion-button  size="large" type="submit" [disabled]="form.invalid" expand="block">Submit</ion-button>
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </form>
+  </ion-content>

@@ -1,62 +1,50 @@
-
 <ion-header>
-    <ion-toolbar color="primary">
-      <ion-buttons slot="start">
-        <ion-menu-button></ion-menu-button>
-      </ion-buttons>
-      <ion-title>Products</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-toolbar color="warning">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Products</ion-title>
+  </ion-toolbar>
+</ion-header>
 
- 
+
 
 <ion-content class="card-background-page">
 
   <ion-card *ngFor="let item of productList" routerLink="/productsDetails/{{item._id}}">
-    
-      <!-- <ion-item>
-          <h4> {{item.productName}} </h4>
-        </ion-item>
-    <ion-img [src]="'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxz3J2L2b2VnAM9GCCxiZvUfXQtjtkTQH1rdg-tuMqTqSFiURc5g'"></ion-img>
-        -->
+
+
     <ion-row>
-            <ion-col>
-                <ion-img style="border: 1px black solid; width: 40%;
-                margin-left: 36px;" [src]="item.productImage"></ion-img>
-            </ion-col>
-            <ion-col>
-                
-                <h4 style="text-align: left;"> <b>₹ {{item.price}} </b> </h4><br>
-                <h6 style="    margin-top: -20px;
-                text-align: left;">{{item.productName}}</h6>
-                <h6 style="     
-                text-align: left;"> <ion-icon name="pin"></ion-icon>{{item.area}}</h6>
-            </ion-col>
-            <!-- <ion-col align-self-center text-center>
-              <ion-note>
-                 
-              </ion-note>
-            </ion-col> -->
-            
-          </ion-row>
+      <ion-col>
+        <ion-img style="border: 1px black solid;  
+                " [src]="item.productImage"></ion-img>
+      </ion-col>
+      <ion-col>
+
+        <h4 style="text-align: left;"> <b>{{item.productName}} </b> </h4><br>
+        <h6 style="    margin-top: -20px;
+                text-align: left;">
+          <ion-icon name="pin"></ion-icon>&nbsp;
+          {{item.city}} &nbsp;&nbsp; {{item.area}}
+        </h6>
+      </ion-col>
+    </ion-row>
   </ion-card>
-  <!-- <ion-fab vertical="bottom" horizontal="center" slot="fixed">
-      <ion-fab-button>
-        <ion-icon name="camera"></ion-icon>
-      </ion-fab-button>
-    </ion-fab> -->
-   
-    <ion-segment (ionChange)="segmentChanged($event)" color="warning">
-        <ion-segment-button value="standard" routerLink="/product" >
-            <ion-icon name="logo-buffer"></ion-icon>
-        </ion-segment-button>
-         
-        <ion-segment-button value="hybrid" routerLink="/sell">
-            <ion-icon name="camera"></ion-icon>
-        </ion-segment-button>
-        <ion-segment-button value="sat" routerLink="/profile">
-            <ion-icon name="person"></ion-icon>
-        </ion-segment-button>
-      </ion-segment>
-  
+
 </ion-content>
+<ion-footer *ngIf="isUserLogin == 'Yes'">
+  <ion-toolbar>
+    <ion-segment (ionChange)="segmentChanged($event)" color="warning" value="product">
+      <ion-segment-button value="product" routerLink="/product">
+        <ion-icon name="logo-buffer"></ion-icon>
+      </ion-segment-button>
+
+      <ion-segment-button value="hybrid" routerLink="/sell">
+        <ion-icon name="camera"></ion-icon>
+      </ion-segment-button>
+      <ion-segment-button value="sat" routerLink="/profile">
+        <ion-icon name="person"></ion-icon>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+</ion-footer>

@@ -23,11 +23,11 @@ export class AppComponent {
     {
       title: 'Complants',
       url: '/complaints',
-      icon: 'home'
+      icon: 'chatbubbles'
     },{
       title: 'Suggesstions',
       url: '/suggestions',
-      icon: 'home'
+      icon: 'bulb'
     },{
       title: 'Settings',
       url: '/settings',
@@ -35,11 +35,11 @@ export class AppComponent {
     },{
       title: 'Term and Cond.',
       url: '/termAndConditions',
-      icon: 'home'
+      icon: 'finger-print'
     },{
       title: 'About Us',
       url: '/aboutUs',
-      icon: 'home'
+      icon: 'at'
     },
   ];
 

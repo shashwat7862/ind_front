@@ -1,15 +1,13 @@
 
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>
-      Products
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
+    <ion-toolbar color="warning">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>Product Details</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
  
 
 <ion-content class="card-background-page">
@@ -19,7 +17,8 @@
       <ion-item>
           <h4> {{productDetails.productName}}</h4>
         </ion-item>
-    <ion-img [src]="'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSbMMnfUxkleJuYR9v1ruy0RG1y6TQdqVjJJ7-huN7utmQkQZe'"></ion-img>
+        <ion-img style="border: 1px black solid;  
+        " [src]="productDetails.productImage"></ion-img>
     <ion-row>
       <ion-col>
           <ion-note>
@@ -103,12 +102,18 @@
           </ion-row>
   </ion-card>
 
-  <ion-segment (ionChange)="segmentChanged($event)" color="warning">
-      <ion-segment-button value="hybrid" routerLink="/sell">
-          <ion-label (click)="openShowInterestModal()">Show Interest</ion-label>
-      </ion-segment-button>
-      <ion-segment-button value="sat" routerLink="/profile">
-          <ion-label (click)="openQueryModal()" >Query</ion-label>
-      </ion-segment-button>
-    </ion-segment>
+  
 </ion-content>
+
+<ion-footer>
+    <ion-toolbar>
+        <ion-segment  color="warning" >
+            <ion-segment-button value="SI" routerLink="/sell" style="border: yellow 1px solid; background-color: black">
+                <ion-label (click)="openShowInterestModal()" color="warning">Show Interest</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="Query" routerLink="/profile"  style="border: yellow 1px solid;background-color: black">
+                <ion-label (click)="openQueryModal()" color="warning">Ask Query</ion-label>
+            </ion-segment-button>
+          </ion-segment>
+    </ion-toolbar>
+  </ion-footer>

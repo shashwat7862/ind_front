@@ -33,4 +33,8 @@ public saveProductDetails(productPayload){
   return this.httpClient.post(`${this.apiURL}/api/v1/product/saveProductDetails`,productPayload);
   
 }
+
+public saveShowinterst(payload){
+  return this.httpClient.post(`${this.apiURL}/api/v1/showinterst/saveShowinterst`,payload);
+}
 }

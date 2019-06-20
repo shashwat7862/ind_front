@@ -16,6 +16,10 @@ const routes: Routes = [
     loadChildren: './products/products.module#productsPageModule'
   },
   {
+    path: 'login',
+    loadChildren: './login-form/login-form.module#loginFormPageModule'
+  },
+  {
     path: 'productsDetails/:id',
     loadChildren: './productsDetails/productsDetails.module#productsDetailsPageModule'
   },

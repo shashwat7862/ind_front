@@ -28,7 +28,8 @@ export class productsDetailsComponent implements OnInit {
    this.ProductService.getProductDetails(this.id).subscribe((res)=>{
        console.log(res);
        result = res
-       this.productDetails = result.object[0]
+       this.productDetails = result.object[0];
+          this.productDetails.productImage = 'http://localhost:3000/'+ this.productDetails.productImage
    });
    }
  
@@ -51,6 +52,8 @@ export class productsDetailsComponent implements OnInit {
 
   onCancel = () =>
     this.modalController.dismiss('cancel');
+
+
     async openShowInterestModal() {
       var isUserLogin = localStorage.getItem('isUserLogin');
     
@@ -85,6 +88,21 @@ export class productsDetailsComponent implements OnInit {
           ]
         });
         toast.present();
+
+        let result = null;
+        console.log(this.productDetails,"product +++++++++++++")
+   this.ProductService.saveShowinterst({ 
+    "productName": this.productDetails.productName,
+    "productId": this.productDetails._id,
+    "city":this.productDetails.city,
+    "mobile": localStorage.getItem('mobile'),
+    "modelNo": this.productDetails.modelNo,
+     "price":this.productDetails.price
+      }).subscribe((res)=>{
+       console.log(res);
+       result = res
+      alert("save successfully")
+   });
 
     }
 

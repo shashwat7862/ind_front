@@ -9,8 +9,10 @@ import { ProductService} from '../api/product/product.service';
 })
 export class ProductsComponent implements OnInit {
 
+  public isUserLogin:any;
+
   constructor(private ProductService:ProductService) {
-     
+     this.isUserLogin = localStorage.getItem('isUserLogin');
    }
 
    public productList:any;

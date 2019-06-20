@@ -16,6 +16,10 @@ export class AuthService {
     return this.httpClient.post(`${this.apiURL}/api/v1/user`,registerData);
 }
 
+public login(loginData){
+  return this.httpClient.post(`${this.apiURL}/api/v1/user/login`,loginData);
+}
+
 public sendOTP(mobileNO){
   return this.httpClient.get(`${this.apiURL}/api/v1/user/OTP/${mobileNO}`);
 }
