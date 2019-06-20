@@ -10,8 +10,7 @@ import { ProductService} from '../api/product/product.service';
 export class ProductsComponent implements OnInit {
 
   constructor(private ProductService:ProductService) {
-    let user = ProductService.getData();
-    console.log(user)
+     
    }
 
    public productList:any;
@@ -20,7 +19,10 @@ export class ProductsComponent implements OnInit {
     this.ProductService.fetchProductList().subscribe((res)=>{
         console.log(res);
         result = res
-        this.productList = result.object
+        this.productList = result.object;
+        this.productList.forEach(product => {
+          product.productImage = '//localhost:3000/'+ product.productImage
+        });
     });
   }
 

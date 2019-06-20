@@ -7,38 +7,82 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content >
-    <input type="file" #fileInput placeholder="Upload file..." />
-    <button type="button" (click)="upload()">Upload</button>
-</ion-content>
+ 
 
-<ion-list>
-    <ion-item>
-      <ion-icon name="person" slot="start"></ion-icon>
-      <ion-label>
-        <p>Product Name</p>
-        <h2>{{userData.fullName}}</h2>
-        <input type="text"  *ngIf="enableEdit" [(ngModel)]="userData.fullName" >
-      </ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-icon name="call" slot="start"></ion-icon>
-      <ion-label>
-        <p>Model</p>
-        <h2>{{userData.mobile}}</h2>
-      </ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-icon name="mail" slot="start"></ion-icon>
-      <ion-label>
-        <p>Email</p>
-        <h2>{{userData.email}}</h2>
-        <input type="text" *ngIf="enableEdit" [(ngModel)]="userData.email" >
-      </ion-label>
-    </ion-item>
-    <ion-row>
-      <ion-col></ion-col>
-      <ion-col><br><ion-button color="primary" *ngIf="!enableEdit" (click)="logOut()" >Submit</ion-button><ion-button color="primary" *ngIf="enableEdit" (click)="SaveEditedUserData()" >Save</ion-button></ion-col>
-      <ion-col></ion-col>
-    </ion-row>
-  </ion-list>
+<ion-content>
+   
+  <form  #form="ngForm" (ngSubmit)="upload(form)">
+        <ion-grid>
+          <ion-row color="primary" justify-content-center>
+            <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+                <div padding>
+                    <ion-item>
+                        <input type="file" #fileInput placeholder="Upload file..." />
+                    </ion-item>
+                  </div>
+                    
+              <div padding>
+                <ion-item>
+                    <ion-label position="floating">Product Name</ion-label>
+                  <ion-input name="productName" type="text"  ngModel required></ion-input>
+                </ion-item>
+              </div>
+              <div padding>
+                  <ion-item>
+                  <ion-label position="floating">Price</ion-label>
+                  <ion-input name="price" type="text"  ngModel required></ion-input>
+                </ion-item>
+              </div>
+              <div padding>
+                  <ion-item>
+                      <ion-label position="floating">Brand</ion-label>
+                    <ion-input name="brandName" type="text"  ngModel required></ion-input>
+                  </ion-item>
+                </div>
+                <div padding>
+                  <ion-item>
+                    <ion-label position="floating">Model Name</ion-label>
+                    <ion-input name="modelNo" type="text"  ngModel required></ion-input>
+                </ion-item>
+                </div>
+                <div padding>
+                
+                    <ion-item>
+                        <ion-label position="floating">City</ion-label>
+                      <ion-input name="city" type="text"  ngModel required></ion-input>
+                    </ion-item>
+                  </div>
+                  <div padding>
+                      <ion-item>
+                      <ion-label position="floating">Area</ion-label>
+                      <ion-input name="area" type="text"  ngModel required></ion-input>
+                      </ion-item>
+                  </div>
+                  <div padding>
+                      <ion-item>
+                          <ion-label position="floating">Pincode</ion-label>
+                        <ion-input name="pincode" type="text"  ngModel required></ion-input>
+                      </ion-item>
+                    </div>
+                    <div padding>
+                        <ion-item>
+                        <ion-label position="floating">Description</ion-label>
+                       <ion-textarea name="description" type="text"   ngModel required></ion-textarea>
+                       </ion-item>
+                    </div>
+              <ion-row>
+                    <ion-col class="signin-col">
+                                    <ion-button  type="submit" [disabled]="form.invalid" expand="block">Submit</ion-button>
+                    </ion-col>
+                    <ion-col class="signin-col">
+                        </ion-col>
+                        <ion-col class="signin-col">
+                                <ion-button color="danger" (click)="onCancel()">Cancel</ion-button>
+                            </ion-col>
+                </ion-row>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </form>
+</ion-content>
+ 

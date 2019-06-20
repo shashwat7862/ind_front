@@ -38,7 +38,7 @@ export class RegisterPage {
       localStorage.setItem('authToken',result.object.authToken);
       this.ShowOTPScreen = true;
       localStorage.setItem('mobile',form.value.mobile);
-      localStorage.setItem('UserData',JSON.stringify(result.object));
+      localStorage.setItem('UserData',result.object.userDetails);
       localStorage.setItem('UserId',result.object.userDetails._id)
 
       this.authService.sendOTP(form.value.mobile).subscribe((res) => {

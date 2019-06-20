@@ -10,10 +10,6 @@ export class ProductService {
 
     constructor(private httpClient: HttpClient) {}
 
-  getData(){
-      return "xdcfgvbhjnmk"
-  }
-
   public sendOtp(mobile,email){
     return this.httpClient.get(`${this.apiURL}/api/v1/user/OTP/${mobile}/${email}`);
 }
@@ -30,6 +26,11 @@ public getProductDetails(id:string){
 
 public uploadImage(file){
   return this.httpClient.post(`${this.apiURL}/api/v1/product/saveImage`,file);
+  
+}
+
+public saveProductDetails(productPayload){
+  return this.httpClient.post(`${this.apiURL}/api/v1/product/saveProductDetails`,productPayload);
   
 }
 }
