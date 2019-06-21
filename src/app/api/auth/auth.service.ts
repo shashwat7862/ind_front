@@ -24,8 +24,8 @@ public sendOTP(mobileNO){
   return this.httpClient.get(`${this.apiURL}/api/v1/user/OTP/${mobileNO}`);
 }
 
-public varifyOTP(mobile,otp){
-  return this.httpClient.get(`${this.apiURL}/api/v1/userapi/varifyUserByOTP/${mobile}/${otp}`);
+public varifyOTP(payload){
+  return this.httpClient.post(`${this.apiURL}/api/v1/userapi/varifyUserByOTP`,payload);
 }
 
 }

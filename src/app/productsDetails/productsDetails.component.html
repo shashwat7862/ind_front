@@ -18,7 +18,7 @@
           <h4> {{productDetails.productName}}</h4>
         </ion-item>
         <ion-img style="border: 1px black solid;  
-        " [src]="productDetails.productImage"></ion-img>
+        " [src]="productDetails.productImage"  (ionError)="imageLoaded($event)"></ion-img>
     <ion-row>
       <ion-col>
           <ion-note>

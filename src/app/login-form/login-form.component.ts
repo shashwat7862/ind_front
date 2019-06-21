@@ -11,7 +11,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./login-form.component.scss'],
 })
 export class LoginFormComponent implements OnInit {
-  public ShowOTPScreen:Boolean = false
+  public ShowOTPScreen:Boolean = false;
+  public loginStatus= false
 
   constructor(public toastController: ToastController,private router: Router,public modalController: ModalController,private  authService:  AuthService) {
   }
@@ -24,7 +25,11 @@ export class LoginFormComponent implements OnInit {
     let result = null;
   this.authService.login(form.value).subscribe((res) => {
     console.log(res);
+    result = res;
+     
     this.ShowOTPScreen = true;
+
+    
     localStorage.setItem('mobile',form.value.mobile);
     this.authService.sendOTP(form.value.mobile).subscribe((res) => {
       console.log(res)
@@ -35,7 +40,12 @@ export class LoginFormComponent implements OnInit {
 submitOTP(form){
     let result = null;
     console.log(form)
-  this.authService.varifyOTP(localStorage.getItem('mobile'),form.value.otp).subscribe(async (res) => {
+  this.authService.varifyOTP({
+    mobile:localStorage.getItem('mobile'),
+    otp:form.value.otp, 
+    isLogin:true,
+    UserData: {}
+  }).subscribe(async (res) => {
       console.log(res)
       result = res;
       this.modalController.dismiss('successLogin');

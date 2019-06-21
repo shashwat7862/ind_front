@@ -32,6 +32,11 @@ export class productsDetailsComponent implements OnInit {
           this.productDetails.productImage = 'http://localhost:3000/'+ this.productDetails.productImage
    });
    }
+
+   imageLoaded(event) {
+    console.log(event)
+    event.target.src = "https://www.digitalcitizen.life/sites/default/files/styles/lst_small/public/featured/2016-08/photo_gallery.jpg";
+ }
  
    ngOnInit() {
      

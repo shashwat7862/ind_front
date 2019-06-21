@@ -1,6 +1,7 @@
-<button (click)="onCancel()">close</button>
+
 <ion-content color="warning">
   <form #form="ngForm" (ngSubmit)="register(form)" *ngIf="!ShowOTPScreen">
+      <ion-icon name="md-close-circle" (click)="onCancel()" style="float:right"></ion-icon>
     <ion-grid>
       <ion-row color="primary" justify-content-center>
         <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
@@ -12,13 +13,7 @@
               <ion-input name="fullName" type="text" placeholder="Name" ngModel required></ion-input>
             </ion-item>
             <ion-item>
-              <ion-input name="mobile" type="mobile" placeholder="9856432277" ngModel required></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-input name="password" type="password" placeholder="Password" ngModel required></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-input name="confirm" type="password" placeholder="Password again" ngModel required></ion-input>
+              <ion-input name="mobile" type="mobile" placeholder="Mobile" ngModel required></ion-input>
             </ion-item>
           </div>
           <div padding>
@@ -39,7 +34,7 @@
           <div padding>
 
             <ion-item>
-              <ion-input name="otp" type="number" placeholder="****" ngModel required></ion-input>
+              <ion-input name="otp" type="number" placeholder="Enter OTP" ngModel required></ion-input>
             </ion-item>
           </div>
           <div padding>
