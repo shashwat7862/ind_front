@@ -2,7 +2,9 @@
 <ion-header>
     <ion-toolbar color="warning">
       <ion-buttons slot="start">
-        <ion-menu-button></ion-menu-button>
+          <ion-buttons slot="start">
+              <ion-back-button defaultHref="product"></ion-back-button>
+          </ion-buttons>
       </ion-buttons>
       <ion-title>Product Details</ion-title>
     </ion-toolbar>
@@ -15,105 +17,56 @@
   <ion-card >
     
       <ion-item>
-          <h4> {{productDetails.productName}}</h4>
+          <h4 style="font-weight: bolder;font-size: 20px"> {{productDetails.productName | capitalizeFirst}}</h4>
         </ion-item>
         <ion-img style="border: 1px black solid;  
         " [src]="productDetails.productImage"  (ionError)="imageLoaded($event)"></ion-img>
-    <ion-row>
-      <ion-col>
-          <ion-note>
-              <h6> Price</h6>
-          </ion-note>
-      </ion-col>
-      <ion-col>
-        
-      </ion-col>
-      <ion-col align-self-center text-center>
-        <ion-note>
-            <h6>₹ {{productDetails.price}}</h6>
-        </ion-note>
-      </ion-col>
-    </ion-row>
-    
-    
-          <ion-row>
-            <ion-col>
-                <ion-note>
-                    <h6> Area</h6>
-                </ion-note>
-            </ion-col>
-            <ion-col>
-              
-              
-            </ion-col>
-            <ion-col align-self-center text-center>
-              <ion-note>
-                  <h6> {{productDetails.area}}</h6>
-              </ion-note>
-            </ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col>
-                <ion-note>
-                    <h6> Model No</h6>
-                </ion-note>
-            </ion-col>
-            <ion-col>
-              
-              
-            </ion-col>
-            <ion-col align-self-center text-center>
-              <ion-note>
-                  <h6> {{productDetails.modelNo}}</h6>
-              </ion-note>
-            </ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col>
-                <ion-note>
-                    <h6> Category</h6>
-                </ion-note>
-            </ion-col>
-            <ion-col>
-              
-              
-            </ion-col>
-            <ion-col align-self-center text-center>
-              <ion-note>
-                  <h6> {{productDetails.category}}</h6>
-              </ion-note>
-            </ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-col>
-                <ion-note>
-                    <h6> Description</h6>
-                </ion-note>
-            </ion-col>
-            <ion-col>
-              
-              
-            </ion-col>
-            <ion-col align-self-center text-center>
-              <ion-note>
-                  <h6> {{productDetails.description}}</h6>
-              </ion-note>
-            </ion-col>
-          </ion-row>
   </ion-card>
+         <ion-card>
+            <ion-card-header>
+                <ion-card-subtitle style="text-align: left;font-weight: bolder;font-size: 14px">Model No</ion-card-subtitle>
+              </ion-card-header>
+            
+              <ion-card-content>
+                  <h6 style="text-align: left;">{{productDetails.modelNo | capitalizeFirst}}</h6>
+              </ion-card-content>
+          </ion-card>
+          <ion-card>
+              <ion-card-header>
+                  <ion-card-subtitle style="text-align: left;font-weight: bolder;font-size: 14px">Category</ion-card-subtitle>
+                </ion-card-header>
+              
+                <ion-card-content>
+                    <h6 style="text-align: left;"> {{productDetails.category | capitalizeFirst}}</h6>
+                </ion-card-content>
+            </ion-card>
+            <ion-card>
+                <ion-card-header>
+                    <ion-card-subtitle style="text-align: left; font-weight: bolder;font-size: 14px">Description</ion-card-subtitle>
+                  </ion-card-header>
+                
+                  <ion-card-content>
+                      <h6 style="text-align: left;"> {{productDetails.description | capitalizeFirst}}</h6>
+                  </ion-card-content>
+              </ion-card>
 
-  
+              <ion-card>
+                  <ion-card-header>
+                      <ion-card-subtitle style="text-align: left;font-weight: bolder;font-size: 14px">AD Posted At</ion-card-subtitle>
+                    </ion-card-header>
+                <ion-img [src]="'https://robertgrantstats.files.wordpress.com/2013/05/iplocation_notreally.png?w=487&crop'"></ion-img>
+              </ion-card>
 </ion-content>
 
-<ion-footer>
+<ion-header>
     <ion-toolbar>
         <ion-segment  color="warning" >
-            <ion-segment-button value="SI" routerLink="/sell" style="border: yellow 1px solid; background-color: black">
-                <ion-label (click)="openShowInterestModal()" color="warning">Show Interest</ion-label>
+            <ion-segment-button (click)="openShowInterestModal()"  value="SI" style="border: #ffce00 1px solid; background-color: black">
+                <ion-label   color="warning">Show Interest</ion-label>
             </ion-segment-button>
-            <ion-segment-button value="Query" routerLink="/profile"  style="border: yellow 1px solid;background-color: black">
-                <ion-label (click)="openQueryModal()" color="warning">Ask Query</ion-label>
+            <ion-segment-button value="Query"  (click)="openQueryModal()"  style="border: #ffce00 1px solid;background-color: white">
+                <ion-label color="warning">Ask Query</ion-label>
             </ion-segment-button>
           </ion-segment>
     </ion-toolbar>
-  </ion-footer>
+  </ion-header>

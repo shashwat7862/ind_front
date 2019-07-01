@@ -1,7 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { NavParams } from '@ionic/angular';
 import { ModalController } from '@ionic/angular';
-import { LoginPage } from './login/login.page'
 
 @Component({
   selector: 'modal-page',
@@ -28,7 +27,7 @@ export class ModalPage {
 
     async openLoginModal() {
         const modal = await this.modalController.create({
-          component: LoginPage,
+          component: '',
           componentProps: { value: 123,keyboardClose:true,showBackdrop:true,animated:true },
         });
         return await modal.present();

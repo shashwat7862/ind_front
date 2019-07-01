@@ -2,6 +2,9 @@ import { Component, OnInit ,ViewChild} from '@angular/core';
 
 import { ProductService} from '../api/product/product.service';
 
+import { ConfigService } from '../api/config';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -12,7 +15,7 @@ export class ProductsComponent implements OnInit {
   public isUserLogin:any;
   public productList:any;
 
-  constructor(private ProductService:ProductService) {
+  constructor(private ProductService:ProductService,public ConfigService:ConfigService,public Router:Router) {
      this.isUserLogin = localStorage.getItem('isUserLogin');
    }
    data: any;
@@ -34,7 +37,8 @@ export class ProductsComponent implements OnInit {
         result = res
         this.productList = result.object;
         this.productList.forEach(product => {
-          product.productImage = '//localhost:3000/'+ product.productImage
+          product.productImage = this.ConfigService.apiUrl+ '/'+product.productImage;
+          console.log(product.productImage,"product.productImage")
         });
     });
     setTimeout(() => {
@@ -56,7 +60,7 @@ export class ProductsComponent implements OnInit {
         result = res
         this.productList = result.object;
         this.productList.forEach(product => {
-          product.productImage = '//localhost:3000/'+ product.productImage
+          product.productImage = this.ConfigService.apiUrl+'/'+ product.productImage
         });
     });
   }
@@ -70,9 +74,20 @@ export class ProductsComponent implements OnInit {
       const formData = new FormData();
       formData.append("image", fileBrowser.files[0]);
       this.ProductService.uploadImage(formData).subscribe(res => {
-       alert("product uploaded successfully")
+      //  alert("product uploaded successfully")
       });
     }
+  }
+
+  segmentChanged(ev: any) {
+    let urlValue = ev.detail.value;
+
+    if(ev.detail.value && localStorage.getItem('isUserLogin') === 'Yes' || urlValue === 'product' ){
+      this.Router.navigate(['/'+urlValue])
+    }else{
+      this.Router.navigate(['/login'])
+    }
+
   }
 
 }

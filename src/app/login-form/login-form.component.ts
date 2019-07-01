@@ -3,7 +3,7 @@ import { ModalController } from '@ionic/angular';
 import { AuthService } from '../api/auth/auth.service';
 import { ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
-
+import { validatelogInService }     from '../api/auth/validatelogIn.service';
 
 @Component({
   selector: 'app-login-form',
@@ -12,9 +12,10 @@ import { Router } from '@angular/router';
 })
 export class LoginFormComponent implements OnInit {
   public ShowOTPScreen:Boolean = false;
-  public loginStatus= false
+  public loginStatus= false;
+  public enableForgotPassword:boolean = false
 
-  constructor(public toastController: ToastController,private router: Router,public modalController: ModalController,private  authService:  AuthService) {
+  constructor(public toastController: ToastController, public Router:Router ,public validatelogInService:validatelogInService,private router: Router,public modalController: ModalController,private  authService:  AuthService) {
   }
 
   ngOnInit() {}
@@ -43,12 +44,13 @@ submitOTP(form){
   this.authService.varifyOTP({
     mobile:localStorage.getItem('mobile'),
     otp:form.value.otp, 
-    isLogin:true,
-    UserData: {}
+    isLogin:false,
+    UserData: {
+      mobile:localStorage.getItem('mobile')}
   }).subscribe(async (res) => {
       console.log(res)
       result = res;
-      this.modalController.dismiss('successLogin');
+      this.validatelogInService.validatelogInUser('successLogin');
       const toast = await this.toastController.create({
           header: 'Dear Customer',
           message: 'You have LogIn successfully"',
@@ -68,15 +70,26 @@ submitOTP(form){
         localStorage.setItem('isUserLogin','Yes');
     localStorage.setItem('authToken',result.object.authToken);
     
+     
+      localStorage.setItem('UserData',result.object.userDetails);
     
-    localStorage.setItem('UserData',result.object.userDetails);
     localStorage.setItem('UserId',result.object.userDetails._id);
+    
+
     this.router.navigate(['/product'])
+    
+    
          
        
         
     });
 }
+
+onCancel(){
+   this.router.navigate(['/product'])
+}
+
+
 
 
 }

@@ -12,37 +12,36 @@ import { ProductService} from '../api/product/product.service';
 export class SellProductComponent {
 
   public UserData:any;
+  public productData:any ={
+    "productName":"",
+    "description":"",
+    "price":"",
+    "brandName":"",
+    "modelNo":"",
+    "city":"",
+    "area":"",
+    "pincode": 0,
+    "productImage":"",
+    "mobile":localStorage.getItem('mobile')
+  }
+  public getNameAndDes:boolean = false;
+  public getpriceAreaandModel:boolean = false
+
   constructor(private ProductService:ProductService,private router: Router,public toastController: ToastController) {
    this.UserData = localStorage.getItem('UserData');
-   console.log(this.UserData,this.UserData['fullName'], this.UserData.mobile)
+   console.log(this.UserData)
    }
 
    @ViewChild('fileInput') fileInput;
 
 
-  
-  upload(productData) {
-    let payload = productData.value;
-    payload.mobile = localStorage.getItem('mobile')
-    
-    console.log(productData,"productData")
-    let fileBrowser = this.fileInput.nativeElement;
-    if (fileBrowser.files && fileBrowser.files[0]) {
-      const formData = new FormData();
-      formData.append("image", fileBrowser.files[0]);
-      let result = null;
-      this.ProductService.uploadImage(formData).subscribe(res => {
-       alert("product uploaded successfully");
-       result = res;
-       if(res){
-         console.log( result.object.name)
-         payload.productImage = result.object.name
-         this.ProductService.saveProductDetails(payload).subscribe(async saveProductData => {
-          alert("product details sell  successfully");
+   FinalProductSubmit(){
+     this.ProductService.saveProductDetails(this.productData).subscribe(async saveProductData => {
+          // alert("product details sell  successfully");
           console.log("saveProductData",saveProductData);
           const toast = await this.toastController.create({
-            header: 'Dear Customer',
-            message: 'Product Save Successfully"',
+            header: 'congratulations',
+            message: 'Your Ad will live soon"',
             position: 'top',
             duration: 4000,
             buttons: [
@@ -58,6 +57,22 @@ export class SellProductComponent {
           toast.present();
           this.router.navigate(['/product'])
          });
+  }
+  upload() {
+    console.log(this.productData,"fvghj");
+    let fileBrowser = this.fileInput.nativeElement;
+    if (fileBrowser.files && fileBrowser.files[0]) {
+      const formData = new FormData();
+      formData.append("image", fileBrowser.files[0]);
+      let result = null;
+      this.getNameAndDes = true;
+         this.getpriceAreaandModel = false;
+
+      this.ProductService.uploadImage(formData).subscribe(res => {
+       result = res;
+       if(res){
+         console.log( result.object.name)
+         this.productData.productImage = result.object.name;
        }
       });
     }

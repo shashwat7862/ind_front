@@ -6,6 +6,8 @@ import { RouterModule } from '@angular/router';
 
 import { productsDetailsComponent } from './productsDetails.component';
 import { ProductService} from '../api/product/product.service';
+import { CapitalizeFirstPipe} from '../Filters/capitalizefirst.pipe'
+
 
 @NgModule({
   imports: [
@@ -19,8 +21,8 @@ import { ProductService} from '../api/product/product.service';
       }
     ])
   ],
-  declarations: [productsDetailsComponent],
+  declarations: [productsDetailsComponent,CapitalizeFirstPipe],
   providers:[ProductService],
-  exports:[productsDetailsComponent]
+  exports:[productsDetailsComponent,CapitalizeFirstPipe]
 })
 export class productsDetailsPageModule {}

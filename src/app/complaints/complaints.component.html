@@ -1,26 +1,41 @@
 <ion-header>
   <ion-toolbar color="warning">
     <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="product"></ion-back-button>
+        </ion-buttons>
     </ion-buttons>
     <ion-title>Complaints</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content >
-  <ion-list>
-    <ion-item>
-      <ion-label position="floating">Title</ion-label>
-      <ion-textarea></ion-textarea>
-    </ion-item>
-    <ion-item>
-        <ion-label position="floating">Description</ion-label>
-        <ion-textarea></ion-textarea>
-      </ion-item>
-    <ion-row>
-      <ion-col></ion-col>
-      <ion-col><br><ion-button color="primary"   (click)="logOut()" >Submit Complaints</ion-button><ion-button color="primary" *ngIf="enableEdit" (click)="SaveEditedUserData()" >Save</ion-button></ion-col>
-      <ion-col></ion-col>
-    </ion-row>
-  </ion-list>
-</ion-content>
+  <ion-content>
+    <form  #form="ngForm" (ngSubmit)="submitComplant(form)">
+          <ion-grid>
+            <ion-row color="primary" justify-content-center>
+              <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+                      
+                <div padding>
+                  
+                  <ion-item>
+                    <ion-input name="title" type="text" placeholder="Title" ngModel required></ion-input>
+                  </ion-item>
+                </div>
+                <div padding>
+                      <ion-item>
+                              <ion-textarea name="Description" type="text" placeholder="Description" ngModel required></ion-textarea>
+                          </ion-item>
+                </div>
+                <ion-row>
+                      <ion-col class="signin-col">
+                                      <ion-button  type="submit"  [disabled]="form.invalid" expand="block">Submit Your Complaint</ion-button>
+                      </ion-col>
+                      <ion-col class="signin-col">
+                          </ion-col>
+                          
+                  </ion-row>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </form>
+  </ion-content>

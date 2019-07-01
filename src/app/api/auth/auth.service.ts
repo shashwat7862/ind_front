@@ -1,14 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ConfigService } from '../config'
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-    apiURL: string = '//localhost:3000';
+    public apiURL: string;
 
-    constructor(private httpClient: HttpClient) {}
+    constructor(private httpClient: HttpClient,public ConfigService:ConfigService) {
+        this.apiURL = this.ConfigService.apiUrl;
+    }
 
    
 
@@ -26,6 +29,10 @@ public sendOTP(mobileNO){
 
 public varifyOTP(payload){
   return this.httpClient.post(`${this.apiURL}/api/v1/userapi/varifyUserByOTP`,payload);
+}
+
+public testApp(){
+  return this.httpClient.get('https://api.opmnstr.com/v1/optin/18980/705264')
 }
 
 }

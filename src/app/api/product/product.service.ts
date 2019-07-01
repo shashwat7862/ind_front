@@ -1,14 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { ConfigService } from '../config'
+ 
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductService {
 
-    apiURL: string = '//localhost:3000';
+  public apiURL: string;
 
-    constructor(private httpClient: HttpClient) {}
+    constructor(private httpClient: HttpClient,public ConfigService:ConfigService) {
+      this.apiURL = this.ConfigService.apiUrl;
+    }
 
   public sendOtp(mobile,email){
     return this.httpClient.get(`${this.apiURL}/api/v1/user/OTP/${mobile}/${email}`);

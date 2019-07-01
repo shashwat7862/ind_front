@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar color="warning">
+    <ion-buttons slot="start">
+        <ion-back-button defaultHref="product"></ion-back-button>
+    </ion-buttons>
+    <ion-title>My Account</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+
+
+
+
+<ion-content>
+  <ion-row>
+    <ion-card routerLink="/profile">
+      <ion-card-header>
+        <ion-card-subtitle style="text-align: left;font-weight: bolder;font-size: 14px">My Profile</ion-card-subtitle>
+      </ion-card-header>
+      <ion-img
+        [src]="'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS68TRqkojiN1_P1uqKJ413w6Zsb83vfOsTvtkv5Z6cQfb_ctYK'">
+      </ion-img>
+    </ion-card>
+    <ion-card routerLink="/SIList">
+      <ion-card-header>
+        <ion-card-subtitle style="text-align: left;font-weight: bolder;font-size: 14px">Product List Where <br>You are
+          Interested In</ion-card-subtitle>
+      </ion-card-header>
+      <ion-img [src]="'https://cdn4.iconfinder.com/data/icons/user-interface-flow-and-patterns-volume-ii/48/31-512.png'"
+        style="height: 225px; width:225px"></ion-img>
+    </ion-card>
+
+
+  </ion-row>
+
+</ion-content>

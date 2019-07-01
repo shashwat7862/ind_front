@@ -33,7 +33,8 @@ export class ProfileComponent implements OnInit {
     localStorage.clear();
     localStorage.setItem('isUserLogin','No');
     this.validatelogInService.validatelogOutUser('logOutUser');
-    this.router.navigate(['/product'])
+    location.reload()
+    // this.router.navigate(['/product'])
   }
 
   SaveEditedUserData(){

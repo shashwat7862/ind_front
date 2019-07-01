@@ -4,9 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 
-import { ProductsComponent } from './products.component';
+import { WelcomeSlidesComponent } from './welcomeSlides.component';
 import { ProductService} from '../api/product/product.service';
-import { TitleCasePipe} from '../Filters/titlecase.pipe'
 
 @NgModule({
   imports: [
@@ -16,11 +15,11 @@ import { TitleCasePipe} from '../Filters/titlecase.pipe'
     RouterModule.forChild([
       {
         path: '',
-        component: ProductsComponent
+        component: WelcomeSlidesComponent
       }
     ])
   ],
-  declarations: [ProductsComponent,TitleCasePipe],
+  declarations: [WelcomeSlidesComponent],
   providers:[ProductService]
 })
-export class productsPageModule {}
+export class WelcomeSlidesPageModule {}

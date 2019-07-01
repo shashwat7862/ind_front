@@ -9,6 +9,9 @@ import { QueryPage } from '../modal/query/query.page';
 import { ModalPage } from '../modal/modal.page';
 import { ToastController } from '@ionic/angular';
 import { validatelogInService }     from '../api/auth/validatelogIn.service';
+import { ConfigService } from '../api/config';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-productsDetails',
@@ -21,7 +24,7 @@ export class productsDetailsComponent implements OnInit {
    @Output() loginUpdate = new EventEmitter<string>();
    id: string;
 
-   constructor(private route: ActivatedRoute,private validatelogInService: validatelogInService,public toastController: ToastController,private ProductService:ProductService,public modalController: ModalController) {
+   constructor(public ConfigService:ConfigService,public Router:Router,private route: ActivatedRoute,private validatelogInService: validatelogInService,public toastController: ToastController,private ProductService:ProductService,public modalController: ModalController) {
     this.id = this.route.snapshot.paramMap.get('id');
     console.log(this.id ,"drftgyhuj");
     let result = null;
@@ -29,7 +32,7 @@ export class productsDetailsComponent implements OnInit {
        console.log(res);
        result = res
        this.productDetails = result.object[0];
-          this.productDetails.productImage = 'http://localhost:3000/'+ this.productDetails.productImage
+          this.productDetails.productImage =this.ConfigService.apiUrl+ '/'+ this.productDetails.productImage
    });
    }
 
@@ -63,17 +66,18 @@ export class productsDetailsComponent implements OnInit {
       var isUserLogin = localStorage.getItem('isUserLogin');
     
       if(isUserLogin === 'No' || isUserLogin == undefined || isUserLogin == null){
-        const modal = await this.modalController.create({
-          component: RegisterPage,
-          componentProps: { value: 123,keyboardClose:true,showBackdrop:true,animated:true },
-        });
-        modal.onDidDismiss()
-        .then((data) => {
-          const user = data['data']; // Here's your selected user!
-          console.log(data,"++++++++++++++++++++++");
-          this.validatelogInService.validatelogInUser(data.data);
-      });
-        return await modal.present();
+      //   const modal = await this.modalController.create({
+      //     component: RegisterPage,
+      //     componentProps: { value: 123,keyboardClose:true,showBackdrop:true,animated:true },
+      //   });
+      //   modal.onDidDismiss()
+      //   .then((data) => {
+      //     const user = data['data']; // Here's your selected user!
+      //     console.log(data,"++++++++++++++++++++++");
+      //     this.validatelogInService.validatelogInUser(data.data);
+      // });
+      //   return await modal.present();
+      this.Router.navigate(['/login'])
         
         
     }else{
@@ -106,7 +110,6 @@ export class productsDetailsComponent implements OnInit {
       }).subscribe((res)=>{
        console.log(res);
        result = res
-      alert("save successfully")
    });
 
     }

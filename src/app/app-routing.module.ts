@@ -4,13 +4,10 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'product',
     pathMatch: 'full'
   },
-  {
-    path: 'home',
-    loadChildren: './home/home.module#HomePageModule'
-  },
+ 
   {
     path: 'product',
     loadChildren: './products/products.module#productsPageModule'
@@ -47,6 +44,10 @@ const routes: Routes = [
   {
     path: 'sell',
     loadChildren: './sellProduct/sellProduct.module#sellProductPageModule'
+  },
+  {
+    path: 'welcomeSlides',
+    loadChildren: './welcomeSlides/welcomeSlides.module#WelcomeSlidesPageModule'
   }
   
 ];
@@ -58,3 +59,6 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule {}
+
+
+ 
